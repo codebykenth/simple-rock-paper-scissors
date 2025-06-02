@@ -1,4 +1,7 @@
-﻿namespace RockPaperScissors {
+﻿using System.Drawing;
+using System.IO;
+
+namespace RockPaperScissors {
     partial class Form1 {
         /// <summary>
         /// Required designer variable.
@@ -87,9 +90,12 @@
             this.btnScissors.Click += new System.EventHandler(this.btnScissors_Click);
             // 
             // pBoxQuestion
+
+            // Update the problematic line  
+            this.pBoxQuestion.Image = Image.FromStream(new MemoryStream(global::RockPaperScissors.Properties.Resources.question2));
             // 
             this.pBoxQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pBoxQuestion.Image = global::RockPaperScissors.Properties.Resources.question2;
+            //this.pBoxQuestion.Image = global::RockPaperScissors.Properties.Resources.question2;
             this.pBoxQuestion.ImageLocation = "";
             this.pBoxQuestion.Location = new System.Drawing.Point(211, 161);
             this.pBoxQuestion.Margin = new System.Windows.Forms.Padding(0);

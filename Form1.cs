@@ -24,22 +24,25 @@ namespace RockPaperScissors {
             return computerTurn;
         }
 
-        private void changeQuestionImg(int computerTurn) {
-            switch (computerTurn) {
-                case 0: {
-                    this.pBoxQuestion.Image = Image.FromFile("C:\\Users\\kenth\\source\\repos\\RockPaperScissors\\images\\option--1.png");
-                    break;
+        private void changeQuestionImg(int computerTurn)
+        {
+            using (var ms = new System.IO.MemoryStream())
+            {
+                switch (computerTurn)
+                {
+                    case 0:
+                        ms.Write(Properties.Resources.option__1, 0, Properties.Resources.option__1.Length);
+                        this.pBoxQuestion.Image = Image.FromStream(ms);
+                        break;
+                    case 1:
+                        ms.Write(Properties.Resources.option__2, 0, Properties.Resources.option__2.Length);
+                        this.pBoxQuestion.Image = Image.FromStream(ms);
+                        break;
+                    case 2:
+                        ms.Write(Properties.Resources.option__3, 0, Properties.Resources.option__3.Length);
+                        this.pBoxQuestion.Image = Image.FromStream(ms);
+                        break;
                 }
-                case 1: {
-                    this.pBoxQuestion.Image = Image.FromFile("C:\\Users\\kenth\\source\\repos\\RockPaperScissors\\images\\option--2.png");
-                    break;
-                }
-                case 2: {
-                    this.pBoxQuestion.Image = Image.FromFile("C:\\Users\\kenth\\source\\repos\\RockPaperScissors\\images\\option--3.png");
-                    break;
-                }
-                default:
-                break;
             }
         }
 
@@ -69,8 +72,13 @@ namespace RockPaperScissors {
             checkEndGame();
         }
 
-        private void resetAll() {
-            this.pBoxQuestion.Image = Image.FromFile("C:\\Users\\kenth\\source\\repos\\RockPaperScissors\\images\\question2.png");
+        private void resetAll()
+        {
+            using (var ms = new System.IO.MemoryStream())
+            {
+                ms.Write(Properties.Resources.question2, 0, Properties.Resources.question2.Length);
+                this.pBoxQuestion.Image = Image.FromStream(ms);
+            }
             playerScore = 0;
             this.lblPlayerScoreValue.Text = playerScore.ToString();
             computerScore = 0;
